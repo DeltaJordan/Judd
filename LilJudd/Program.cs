@@ -2,7 +2,6 @@
 using DSharpPlus.CommandsNext;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Extensions;
-using Judd.Events;
 using Newtonsoft.Json;
 using NLog;
 using NLog.Config;
@@ -12,14 +11,14 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Judd
+namespace LilJudd
 {
     public static class Program
     {
         public static DiscordClient Client;
 
-        private static InteractivityExtension interactivity;
         private static CommandsNextExtension commands;
+        private static InteractivityExtension interactivity;
 
         public static async Task Main(string[] args)
         {
@@ -92,8 +91,6 @@ namespace Judd
             commands.RegisterCommands(Assembly.GetExecutingAssembly());
 
             interactivity = Client.UseInteractivity(new InteractivityConfiguration { });
-
-            await DiscordEventMitigator.RegisterEventsAsync(Client);
 
             await Client.ConnectAsync();
 
