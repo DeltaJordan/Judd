@@ -1,5 +1,7 @@
 ﻿using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
+using Judd.SQL;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +12,10 @@ namespace Judd.Commands
 {
     public class RegistrationModule : BaseCommandModule
     {
-        //TASK
-        
+        private MySqlConnection mySqlConnection = MySqlClient.MySqlConnection;
+
         [Command("Register")]
-        public static async Task ApplyForRegistration(CommandContext ctx)
+        public async Task ApplyForRegistration(CommandContext ctx)
         {
             //command trigger (reaction / chat input)          
             //if user does not have profile
@@ -23,22 +25,22 @@ namespace Judd.Commands
                     //IGN, Nickname, FC
                     //extra: Weapons, Bio, Team, idk whatever
                 //Validation:
-                    //is valid name 
-                    //is valid FC
+                //is valid name 
+                //is valid FC
                 //approval for info tracking idk
-                    //connect to splatnet
+                //connect to splatnet
                 //void CreateTempProfile (player data);
                 //display profile 
                 //user confirmation
                 // void CreateSQLProfile (player data);      
                 // void CreateDiscordProfileFromSQL; 
-            //else (user has profile) 
+                //else (user has profile) 
                 //ligma balls
 
-            
-          // void CreateSQLProfile (player data);      
-          // void CreateDiscordProfileFromSQL; 
-          // void CreateTempProfile (player data);
+
+            // void CreateSQLProfile (player data);      
+            // void CreateDiscordProfileFromSQL; 
+            // void CreateTempProfile (player data);
 
         }
             
