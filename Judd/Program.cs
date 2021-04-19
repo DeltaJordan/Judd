@@ -76,7 +76,7 @@ namespace Judd
             {
                 Token = Globals.BotSettings.BotToken,
                 TokenType = TokenType.Bot,
-                MinimumLogLevel = Microsoft.Extensions.Logging.LogLevel.Debug
+                MinimumLogLevel = Microsoft.Extensions.Logging.LogLevel.Information
             });
 
             commands = Client.UseCommandsNext(new CommandsNextConfiguration
