@@ -19,12 +19,12 @@ namespace Judd.Events
 
         private static Task Client_Heartbeated(DiscordClient sender, DSharpPlus.EventArgs.HeartbeatEventArgs e)
         {
-            string buildfolder = "Release";
+            string buildFolder = "Release";
 #if DEBUG
-            buildfolder = "Debug";
+            buildFolder = "Debug";
 #endif
 
-            string Timestamp = JsonConvert.SerializeObject(e.Timestamp);
+            string timestamp = JsonConvert.SerializeObject(e.Timestamp);
 
             DirectoryInfo directoryInfo = Directory.CreateDirectory(Globals.AppPath);
 
@@ -36,8 +36,8 @@ namespace Judd.Events
             directoryInfo = directoryInfo.Parent;
 
             File.WriteAllText(Path.Combine(directoryInfo.FullName,
-               "LilJudd", "bin", buildfolder, "net5.0", "Data", "JuddLifeSupport.json"),
-               Timestamp);
+               "LilJudd", "bin", buildFolder, "net5.0", "Data", "JuddLifeSupport.json"),
+               timestamp);
 
             return Task.CompletedTask;
         }
