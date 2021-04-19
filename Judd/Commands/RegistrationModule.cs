@@ -11,8 +11,11 @@ namespace Judd.Commands
     public class RegistrationModule : BaseCommandModule
     {
         //TASK
-            //command trigger (reaction / chat input)
-
+        
+        [Command("Register")]
+        public static async Task ApplyForRegistration(CommandContext ctx)
+        {
+            //command trigger (reaction / chat input)          
             //if user does not have profile
                 //dm
                 //rules
@@ -37,6 +40,8 @@ namespace Judd.Commands
           // void CreateDiscordProfileFromSQL; 
           // void CreateTempProfile (player data);
 
+        }
+            
 
         //////////////
         ////FC CHECK
