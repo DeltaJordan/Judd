@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Judd
 {
-    public static class Program
+    public static class JuddMain
     {
         public static DiscordClient Client;
 
