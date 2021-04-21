@@ -23,7 +23,7 @@ namespace Judd.SQL
         private static void InitSqlClient()
         {
             string connectionString =
-                $"server={Globals.BotSettings.MySqlIp};user={Globals.BotSettings.MySqlUsername};database=sdl;port=3306;password={Globals.BotSettings.MySqlPassword}";
+                $"server={Globals.BotSettings.MySqlIp};user={Globals.BotSettings.MySqlUsername};database=sys;port=3306;password={Globals.BotSettings.MySqlPassword}";
 
             MySqlConnection = new MySqlConnection(connectionString);
             MySqlConnection.Open();
@@ -50,10 +50,12 @@ namespace Judd.SQL
             return true;
         }
 
-        public static void VerifyConnection()
+        public static bool VerifyConnection()
         {
             if (!IsConnectionOpen())
-                RefreshConnection();
+                return RefreshConnection();
+            else
+                return true;
         }
     }
 }
