@@ -12,4 +12,10 @@
     <PackageReference Include="NLog" Version="4.7.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\settings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
