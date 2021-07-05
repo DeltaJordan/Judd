@@ -23,7 +23,6 @@ namespace Judd.Commands
         public async Task ApplyForRegistration(CommandContext ctx)
         {
             //get interactivity from user
-            
 
             //if the sql server is not responding (error is handled elsewhere)
             if (SQLError)

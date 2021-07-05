@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Judd", "Judd\Judd.csproj", "{3A67716B-8523-456D-889B-254060209953}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LilJudd", "LilJudd\LilJudd.csproj", "{63D1538D-FF63-4D4B-93FB-FFC8E4294A1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LilJudd", "LilJudd\LilJudd.csproj", "{63D1538D-FF63-4D4B-93FB-FFC8E4294A1F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9754535C-B99F-4118-9EF5-DB96BFF48A6F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

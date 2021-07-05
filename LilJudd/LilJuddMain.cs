@@ -1,7 +1,9 @@
 ﻿using DSharpPlus;
 using DSharpPlus.CommandsNext;
+using DSharpPlus.Entities;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Extensions;
+using LilJudd.Support;
 using Newtonsoft.Json;
 using NLog;
 using NLog.Config;
@@ -13,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace LilJudd
 {
-    public static class Program
+    public static class LilJuddMain
     {
         public static DiscordClient Client;
 
@@ -75,7 +77,7 @@ namespace LilJudd
             {
                 Token = Globals.BotSettings.BotToken,
                 TokenType = TokenType.Bot,
-                MinimumLogLevel = Microsoft.Extensions.Logging.LogLevel.Debug
+                MinimumLogLevel = Microsoft.Extensions.Logging.LogLevel.Information
             });
 
             commands = Client.UseCommandsNext(new CommandsNextConfiguration
@@ -92,9 +94,41 @@ namespace LilJudd
 
             interactivity = Client.UseInteractivity(new InteractivityConfiguration { });
 
+            Client.MessageCreated += Client_MessageCreated;
+
             await Client.ConnectAsync();
 
+            await HeartbeatMonitor.BeginMonitorAsync();
+
             await Task.Delay(-1);
+        }
+
+        private static async Task Client_MessageCreated(DiscordClient sender, DSharpPlus.EventArgs.MessageCreateEventArgs e)
+        {
+            try
+            {
+                if (e.Channel.Type != ChannelType.Text)
+                {
+                    return;
+                }
+
+                DiscordMember authorMember = await e.Guild.GetMemberAsync(e.Author.Id);
+
+                if (authorMember.PermissionsIn(e.Channel).HasPermission(Permissions.Administrator))
+                {
+                    return;
+                }
+
+                if (HeartbeatMonitor.IsJuddDown && e.Message.GetStringPrefixLength("%") > 0)
+                {
+                    await e.Channel.SendMessageAsync("Judd is currently having issues with processing commands. " +
+                        "The developers have been notified of this error and are working to fix this as quickly as possible. Thank you.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
     }
 }
